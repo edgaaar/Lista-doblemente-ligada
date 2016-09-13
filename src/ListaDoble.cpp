@@ -38,11 +38,6 @@ void ListaDoble::Show()
 	while(aux!=NULL)
 	{
 		std::cout<<aux->getDato()<<std::endl;
-		/*if (aux->getSig()!=NULL)
-		{
-			std::cout<<"El siguiente de "<<aux->getDato()<<" es: "<< aux->getSig()->getDato()<<std::endl;
-		}
-		*/
 		aux=aux->getSig();
 	}
 }
@@ -122,20 +117,19 @@ void ListaDoble::RemoveRef(int Ref)
 {
 	if(!ListaDobleVacia())
 	{
-	
-		Nodo* aux = H;
-		Nodo* aux2 = NULL; 
-		while(aux->getDato()!= Ref || aux != NULL)
-		{
-			aux2 = aux;
-			aux = aux->getSig();
+		Nodo* aux = BuscarElemento(Ref);
+		if(aux != NULL){
+			if (aux != H && aux != T)
+			{
+				aux->getAnt()->setSig(aux->getSig());
+				aux->getSig()->setAnt(aux->getAnt());
+			}else{
+				(aux==H)?RemoveInicio():RemoveFinal();
+			}
+		}else{
+			std::cout<<"No se encontró la referencia a eliminar"<<std::endl;
 		}
-		if(aux==H) 
-			RemoveInicio();
-			else{
-				aux2->setSig(aux->getSig());
-			} 
-
+		
 	}else{
 		std::cout<<"La lista está vacía"<<std::endl;
 	}

@@ -7,6 +7,9 @@ int main()
 	ListaDoble ld = ListaDoble();
 	//ld.RemoveInicio();
 	//ld.RemoveFinal();
+	ld.RemoveRef(99);
+	ld.RemoveFinal();
+	ld.RemoveInicio();
 	ld.AddInicio(4);
 	ld.AddInicio(5);
 	ld.AddFinal(20);
@@ -22,6 +25,7 @@ int main()
 	ld.RemoveFinal();
 	ld.RemoveInicio();
 	ld.RemoveRef(4);
+	ld.RemoveRef(99);
 	/*ld.RemoveFinal();
 	ld.RemoveFinal();
 	ld.RemoveFinal();
