@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/lista_doble.dir/src/Nodo.cpp.o CMakeFiles/lista_doble.dir/src/main.cpp.o CMakeFiles/lista_doble.dir/src/ListaDoble.cpp.o  -o lista_doble -rdynamic 

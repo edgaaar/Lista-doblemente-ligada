@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/ListaDoble.h
+Nodo.h
+../include/Nodo.h
+
+../include/Nodo.h
+iostream
+-
+
+/home/edgar/Programas/Lista-doblemente-ligada/src/ListaDoble.cpp
+ListaDoble.h
+/home/edgar/Programas/Lista-doblemente-ligada/src/ListaDoble.h
+
+/home/edgar/Programas/Lista-doblemente-ligada/src/Nodo.cpp
+Nodo.h
+/home/edgar/Programas/Lista-doblemente-ligada/src/Nodo.h
+
+/home/edgar/Programas/Lista-doblemente-ligada/src/main.cpp
+ListaDoble.h
+/home/edgar/Programas/Lista-doblemente-ligada/src/ListaDoble.h
+
