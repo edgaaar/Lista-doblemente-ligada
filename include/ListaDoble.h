@@ -13,7 +13,7 @@ public:
 	void AddRef(int Dato, int Ref);
 	int RemoveInicio();
 	int RemoveFinal();
-	int RemoveRef(int Ref);
+	void RemoveRef(int Ref);
 	void VaciarListaDoble();
 	Nodo* BuscarElemento(int Dato);
 	void Show();

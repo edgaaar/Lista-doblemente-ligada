@@ -38,10 +38,11 @@ void ListaDoble::Show()
 	while(aux!=NULL)
 	{
 		std::cout<<aux->getDato()<<std::endl;
-		if (aux->getAnt()!=NULL)
+		/*if (aux->getSig()!=NULL)
 		{
-			std::cout<<"El anterior de "<<aux->getDato()<<" es: "<< aux->getAnt()->getDato()<<std::endl;
+			std::cout<<"El siguiente de "<<aux->getDato()<<" es: "<< aux->getSig()->getDato()<<std::endl;
 		}
+		*/
 		aux=aux->getSig();
 	}
 }
@@ -52,6 +53,7 @@ void ListaDoble::AddFinal(int Dato)
 	if(!ListaDobleVacia())
 	{
 		T->setSig(aux);
+		T = aux;
 	}else{
 		H = aux;
 		T = aux;
@@ -67,12 +69,8 @@ void ListaDoble::AddRef(int Dato, int Ref)
 		T = H;
 		std::cout<<"La lista estaba vacía, sin embargo se agregó el elemento"<<std::endl;
 	}else{
-		Nodo* aux = H;
-		while(aux->getDato() != Ref || aux != NULL)
-		{
-			aux = aux->getSig();	
-		}
-		//Sale del while siendo aux el nodo donde se encuentra la ref. (o siendo nulo)
+		Nodo* aux = BuscarElemento(Ref);
+
 		if(aux != NULL)
 		{
 			Nodo* aux2 = new Nodo(Dato, aux->getSig(), aux);
@@ -105,11 +103,8 @@ int ListaDoble::RemoveFinal(void)
 		int Dato = T->getDato();
 		if(H!=T)
 		{
-			Nodo* aux = H;
-			while(aux->getSig()!=T)
-			{
-				aux = aux->getSig();
-			}
+			Nodo* aux = NULL;
+			aux = T->getAnt();
 			aux->setSig(NULL);
 			T = aux;
 
@@ -123,7 +118,7 @@ int ListaDoble::RemoveFinal(void)
 	}	
 }
 
-int ListaDoble::RemoveRef(int Ref)
+void ListaDoble::RemoveRef(int Ref)
 {
 	if(!ListaDobleVacia())
 	{
@@ -135,13 +130,14 @@ int ListaDoble::RemoveRef(int Ref)
 			aux2 = aux;
 			aux = aux->getSig();
 		}
-		aux2->setSig(aux->getSig());
-		
-		return Ref;
+		if(aux==H) 
+			RemoveInicio();
+			else{
+				aux2->setSig(aux->getSig());
+			} 
 
 	}else{
 		std::cout<<"La lista está vacía"<<std::endl;
-		return (int)NULL;
 	}
 }
 
@@ -150,9 +146,13 @@ Nodo* ListaDoble::BuscarElemento(int Dato)
 	if(!ListaDobleVacia())
 	{
 		Nodo* aux = H;
-		while(aux->getDato()!=Dato && aux != NULL)
-			aux = aux->getSig();
+
+			while(aux != NULL && aux->getDato()!=Dato)
+					aux = aux->getSig();
+
 		return aux;
+	}else{
+		return NULL;
 	}
 }
 
