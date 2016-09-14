@@ -1,11 +1,13 @@
 #include "ListaDoble.h"
 
+//Constructor vacío. Crea una lista de elementos nulos.
 ListaDoble::ListaDoble()
 {
 	this->H=NULL;
 	this->T=NULL;
 }
 
+//Constructor que recibe el dato del primer nodo que se creará.
 ListaDoble::ListaDoble(int Dato)
 {
 	Nodo * aux= new Nodo(Dato);
@@ -13,6 +15,7 @@ ListaDoble::ListaDoble(int Dato)
 	this->T=aux;
 }
 
+//Verifica si la lista está vacía, de así serlo regresa TRUE
 bool ListaDoble::ListaDobleVacia()
 {
 	if (this->H == NULL && this->T == NULL)
@@ -20,6 +23,7 @@ bool ListaDoble::ListaDobleVacia()
 	return false;
 }
 
+//Añde un elemento al inicio de la lista.
 void ListaDoble::AddInicio(int Dato)
 {
 	Nodo* aux = new Nodo(Dato,this->H, NULL);
@@ -32,6 +36,7 @@ void ListaDoble::AddInicio(int Dato)
 	}
 }
 
+//Muestra los elementos contenidos en la lista.
 void ListaDoble::Show()
 {
 	Nodo* aux = this->H;
@@ -42,6 +47,7 @@ void ListaDoble::Show()
 	}
 }
 
+//Añde un elemento al final de la lista.
 void ListaDoble::AddFinal(int Dato)
 {
 	Nodo* aux = new Nodo(Dato, NULL, this->T);
@@ -55,6 +61,8 @@ void ListaDoble::AddFinal(int Dato)
 	}
 }
 
+/*Añade un elemento justo después del nodo que como dato tiene la referencia buscada.
+El método recibe el dato del nuevo nodo (Dato) y la referencia (Ref)*/
 void ListaDoble::AddRef(int Dato, int Ref)
 {
 	if(ListaDobleVacia())
@@ -77,6 +85,7 @@ void ListaDoble::AddRef(int Dato, int Ref)
 	}
 }
 
+//Elimina al primer nodo, regresando el dato que contenía.
 int ListaDoble::RemoveInicio(void)
 {
 	if(!ListaDobleVacia())
@@ -91,6 +100,7 @@ int ListaDoble::RemoveInicio(void)
 	}	
 }
 
+//Elimina al último nodo, regresando el dato que contenía.
 int ListaDoble::RemoveFinal(void)
 {
 	if(!ListaDobleVacia())
@@ -113,6 +123,7 @@ int ListaDoble::RemoveFinal(void)
 	}	
 }
 
+//Elimina al nodo que contenga como dato la referencia.
 void ListaDoble::RemoveRef(int Ref)
 {
 	if(!ListaDobleVacia())
@@ -135,14 +146,16 @@ void ListaDoble::RemoveRef(int Ref)
 	}
 }
 
+/*Devuelve un apuntador al primer nodo encontrado que contenga el dato buscado.
+En caso de no ser encontrado dicho dato, regresa NULL*/
 Nodo* ListaDoble::BuscarElemento(int Dato)
 {
 	if(!ListaDobleVacia())
 	{
 		Nodo* aux = H;
 
-			while(aux != NULL && aux->getDato()!=Dato)
-					aux = aux->getSig();
+		while(aux != NULL && aux->getDato()!=Dato)
+			aux = aux->getSig();
 
 		return aux;
 	}else{
@@ -150,8 +163,9 @@ Nodo* ListaDoble::BuscarElemento(int Dato)
 	}
 }
 
+//Asigna a H y a T como elementos nulos. Se obtiene una lista vacía.
 void ListaDoble::VaciarListaDoble(void)
 {
-	H = NULL;
-	T = H;
+	this->H = NULL;
+	this->T = NULL;
 }
